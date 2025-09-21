@@ -1,12 +1,15 @@
 import { Component, Input } from '@angular/core';
+import { NgStyle } from '@angular/common';
 import { iStep } from '../../models/istep';
+
 @Component({
   selector: 'app-escena',
   standalone: true,
+  imports: [NgStyle],
   templateUrl: './escena.html',
-  styleUrl: './escena.css'
+  styleUrls: ['./escena.css']
 })
 export class EscenaComponent {
-  // Usar @Input para recibir el array completo
-  @Input() public stepsData: iStep[] = [];
+
+  @Input({ required: true }) public stepData!: iStep;
 }
