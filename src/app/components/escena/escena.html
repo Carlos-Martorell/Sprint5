@@ -1,13 +1,14 @@
-@for (step of stepsData; track step.title) {
-  <div class="step-card {{ step.bgcolor }} ">
-    <img [src]="step.img" alt="Ilustración del Onboarding" class="w-76 h-auto">
-    <h3 class="font-bold text-xl">{{ step.title }}</h3>
-    <p class="mt-1 mb-4">{{ step.description }}</p>
 
-    @if (!$last) {
-        <br>
-    }
-  </div>
-} @empty {
-  <p>No hay pasos de onboarding disponibles.</p>
-}
+<div
+  class="flex flex-col items-center p-8 m-4 rounded-lg shadow-lg text-center"
+  [ngStyle]="{ 'background-color': stepData.bgcolor }"
+>
+  <img
+    [src]="stepData.img"
+    alt="Ilustración de: {{ stepData.title }}"
+    class="w-32 h-32 mb-4"
+  >
+
+  <h3 class="font-bold text-2xl mb-2">{{ stepData.title }}</h3>
+  <p class="text-gray-700">{{ stepData.description }}</p>
+</div>
