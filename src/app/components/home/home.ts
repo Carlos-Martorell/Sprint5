@@ -4,7 +4,6 @@ import { StepsService } from '../../services/steps';
 import { EscenaComponent } from '../escena/escena';
 import { iStep } from '../../models/istep';
 
-
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -14,47 +13,66 @@ import { iStep } from '../../models/istep';
 })
 export class HomeComponent implements OnInit {
 
-  // La lista completa de todos los pasos
   public steps = signal<iStep[]>([]);
-
-  // 🎯 SIGNAL para rastrear el índice de la frase activa (Empieza en 0)
   public currentStepIndex = signal<number>(0);
-
-  // 🎯 SIGNAL COMPUTADA: Devuelve el objeto iStep que corresponde al índice actual
-  public currentStep = computed(() =>
-    this.steps()[this.currentStepIndex()]
-  );
-
-  // 🎯 SIGNAL COMPUTADA: Controla si el botón "Retroceder" debe estar deshabilitado
+  public currentStep = computed(() => this.steps()[this.currentStepIndex()]);
   public canGoBack = computed(() => this.currentStepIndex() > 0);
-
-  // 🎯 SIGNAL COMPUTADA: Controla si el botón "Avanzar" debe estar deshabilitado
   public canGoForward = computed(() => this.currentStepIndex() < this.steps().length - 1);
+  public animationDirection = signal<'forward' | 'backward'>('forward');
+  public showEscena = signal<boolean>(true);
 
   constructor(private stepsService: StepsService) {}
 
   ngOnInit() {
-    // Carga los datos al iniciar el componente
     this.steps.set(this.stepsService.getSteps());
   }
 
-  // 🎯 Método para avanzar (incrementa el índice)
+  changeStep(newIndex: number, direction: 'forward' | 'backward') {
+    this.showEscena.set(false);
+    this.animationDirection.set(direction);
+
+    setTimeout(() => {
+      this.currentStepIndex.set(newIndex);
+      this.showEscena.set(true);
+    }, 500);
+  }
+
   goForward(): void {
     if (this.canGoForward()) {
-      // Usamos update() para modificar el valor basado en el valor actual
-      this.currentStepIndex.update(index => index + 1);
+      this.changeStep(this.currentStepIndex() + 1, 'forward');
     }
   }
 
-  // 🎯 Método para retroceder (decrementa el índice)
   goBack(): void {
     if (this.canGoBack()) {
-      this.currentStepIndex.update(index => index - 1);
+      this.changeStep(this.currentStepIndex() - 1, 'backward');
     }
   }
 
-  // 🎯 Método para saltar a un paso específico (usado por las bolitas)
   goToStep(index: number): void {
-      this.currentStepIndex.set(index);
+      const isForward = index > this.currentStepIndex();
+      this.changeStep(index, isForward ? 'forward' : 'backward');
+  }
+
+  onEnter(event: any): void {
+    const element = event.target as HTMLElement;
+    if (this.animationDirection() === 'forward') {
+      element.classList.add('slide-in');
+      setTimeout(() => element.classList.remove('slide-in'), 500);
+    } else {
+      element.classList.add('slide-in-reverse');
+      setTimeout(() => element.classList.remove('slide-in-reverse'), 500);
+    }
+  }
+
+  onLeave(event: any): void {
+    const element = event.target as HTMLElement;
+    if (this.animationDirection() === 'forward') {
+      element.classList.add('slide-out');
+      setTimeout(() => element.classList.remove('slide-out'), 500);
+    } else {
+      element.classList.add('slide-out-reverse');
+      setTimeout(() => element.classList.remove('slide-out-reverse'), 500);
+    }
   }
 }

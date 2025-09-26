@@ -1,0 +1,103 @@
+/* .slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.slide-out {
+  animation: slideOut 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+app-escena {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+} */
+
+.slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.slide-out {
+  animation: slideOut 0.5s ease-out forwards;
+}
+
+/* Animación de entrada para el retroceso (desde la izquierda) */
+.slide-in-reverse {
+  animation: slideInReverse 0.5s ease-out forwards;
+}
+
+/* Animación de salida para el retroceso (hacia la derecha) */
+.slide-out-reverse {
+  animation: slideOutReverse 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInReverse {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutReverse {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+ /* app-escena {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+} */
