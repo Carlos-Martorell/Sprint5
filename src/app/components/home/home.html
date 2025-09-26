@@ -1,10 +1,13 @@
-<div class="flex flex-col items-center min-h-screen bg-white lg:justify-center lg:min-h-[800px]">
+<div
+  class="flex flex-col items-center min-h-screen bg-white overflow-hidden lg:justify-start lg:min-h-[800px]"
+>
   <div class="relative w-full h-full lg:flex lg:justify-center lg:h-full">
     @if (showEscena()) {
       <app-escena
         [stepData]="currentStep()"
         (animate.enter)="onEnter($event)"
         (animate.leave)="onLeave($event)"
+        class="z-10 absolute top-0 left-0 w-full h-full lg:relative lg:w-auto lg:h-auto lg:z-auto"
       >
         <div class="w-full flex justify-between items-center p-0 lg:mt-6">
           <div class="dots-indicator flex gap-2">

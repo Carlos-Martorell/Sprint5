@@ -63,3 +63,15 @@
   width: 100%;
   height: 100%;
 } */
+
+.slide-in,
+.slide-in-reverse,
+.slide-out,
+.slide-out-reverse {
+  /* Avisa al navegador que esta propiedad va a cambiar */
+  will-change: transform, opacity;
+
+  /* Esta es la propiedad MÁGICA. Fija el elemento en un plano 3D */
+  /* Esto suele resolver los artefactos visuales y el "difuminado" */
+  transform: translate3d(0, 0, 0);
+}
