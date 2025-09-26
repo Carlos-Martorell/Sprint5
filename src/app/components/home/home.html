@@ -1,58 +1,11 @@
-<!-- <div class="flex flex-col items-center min-h-screen bg-white lg:justify-center lg:min-h-[800px]">
-
-  <div class="relative w-full h-full lg:flex lg:justify-center lg:h-full">
-    @if (showEscena()) {
-      <app-escena
-        [stepData]="currentStep()"
-        [attr.animate.enter]="animationDirection() === 'forward' ? 'slide-in' : 'slide-in-reverse'"
-        [attr.animate.leave]="animationDirection() === 'forward' ? 'slide-out' : 'slide-out-reverse'">
-
-        <div class="w-full flex justify-between items-center p-0 lg:mt-6">
-          <div class="dots-indicator flex gap-2">
-            @for (step of steps(); track $index) {
-              <span
-                (click)="goToStep($index)"
-                class="transition-all duration-300 ease-in-out rounded-full cursor-pointer h-2"
-                [ngClass]="{
-                  'w-8 bg-black': currentStepIndex() === $index,
-                  'w-2 bg-gray-400': currentStepIndex() !== $index
-                }"
-                [title]="step.title">
-              </span>
-            }
-          </div>
-          <div class="flex gap-4">
-            @if (canGoBack()) {
-              <button
-                (click)="goBack()"
-                class="bg-gray-800 hover:bg-gray-700 text-white font-bold text-xl w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
-                aria-label="Retroceder">
-                &larr;
-              </button>
-            }
-            @if (canGoForward()) {
-              <button
-                (click)="goForward()"
-                class="bg-black hover:bg-gray-800 text-white font-bold text-xl w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
-                aria-label="Avanzar">
-                &rarr;
-              </button>
-            }
-          </div>
-        </div>
-      </app-escena>
-    }
-  </div>
-</div> -->
 <div class="flex flex-col items-center min-h-screen bg-white lg:justify-center lg:min-h-[800px]">
-
   <div class="relative w-full h-full lg:flex lg:justify-center lg:h-full">
     @if (showEscena()) {
       <app-escena
         [stepData]="currentStep()"
         (animate.enter)="onEnter($event)"
-        (animate.leave)="onLeave($event)">
-
+        (animate.leave)="onLeave($event)"
+      >
         <div class="w-full flex justify-between items-center p-0 lg:mt-6">
           <div class="dots-indicator flex gap-2">
             @for (step of steps(); track $index) {
@@ -61,9 +14,10 @@
                 class="transition-all duration-300 ease-in-out rounded-full cursor-pointer h-2"
                 [ngClass]="{
                   'w-8 bg-black': currentStepIndex() === $index,
-                  'w-2 bg-gray-400': currentStepIndex() !== $index
+                  'w-2 bg-gray-400': currentStepIndex() !== $index,
                 }"
-                [title]="step.title">
+                [title]="step.title"
+              >
               </span>
             }
           </div>
@@ -72,7 +26,8 @@
               <button
                 (click)="goBack()"
                 class="bg-gray-800 hover:bg-gray-700 text-white font-bold text-xl w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
-                aria-label="Retroceder">
+                aria-label="Retroceder"
+              >
                 &larr;
               </button>
             }
@@ -80,7 +35,8 @@
               <button
                 (click)="goForward()"
                 class="bg-black hover:bg-gray-800 text-white font-bold text-xl w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
-                aria-label="Avanzar">
+                aria-label="Avanzar"
+              >
                 &rarr;
               </button>
             }

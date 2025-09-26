@@ -7,9 +7,8 @@ import { iStep } from '../../models/istep';
   standalone: true,
   imports: [NgStyle],
   templateUrl: './escena.html',
-  styleUrls: ['./escena.css']
+  styleUrls: ['./escena.css'],
 })
 export class EscenaComponent {
-
   @Input({ required: true }) public stepData!: iStep;
 }
