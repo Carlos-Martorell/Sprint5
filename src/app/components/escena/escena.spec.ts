@@ -1,22 +1,38 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { EscenaComponent } from './escena';
+import { iStep } from '../../models/istep';
 
-import { Escena } from './escena';
+const MOCK_STEP: iStep = {
+  title: 'Test Title',
+  description: 'Test Description',
+  img: '/test.svg',
+  bgcolor: '#FFF',
+};
 
-describe('Escena', () => {
-  let component: Escena;
-  let fixture: ComponentFixture<Escena>;
+describe('EscenaComponent', () => {
+  let component: EscenaComponent;
+  let fixture: ComponentFixture<EscenaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Escena],
+      imports: [EscenaComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Escena);
+    fixture = TestBed.createComponent(EscenaComponent);
     component = fixture.componentInstance;
+
+    component.stepData = MOCK_STEP;
+
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('debería crearse correctamente', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('debería mostrar el título del paso en el template', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.textContent).toContain(MOCK_STEP.title);
   });
 });
