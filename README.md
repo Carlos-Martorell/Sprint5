@@ -1,53 +1,3 @@
-# OnBoarding
-
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
-
-## Development server
-
-To start a local development server, run:
-
-`ng serve`
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-`ng generate component component-name`
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-`ng generate --help`
-
-## Building
-
-To build the project run:
-
-`ng build`
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-`ng test`
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-`ng e2e`
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
----
-
 # 🚀 Onboarding Carousel Project
 
 This project implements a modern onboarding carousel using **Angular 20 Standalone Components** and **CSS Animations** for smooth, directional transitions.
@@ -132,30 +82,6 @@ The directional sliding is achieved by:
 3.  **Custom Logic:** The `onEnter` and `onLeave` callbacks in `home.ts` dynamically **add and remove** the correct CSS classes (`slide-in-reverse`, `slide-out-reverse`, etc.) based on the current `animationDirection()`.
 
 ---
-
-## Development Setup & Initial Quality Tools
-
-To get the project running locally and to set up the code quality checks, follow these steps.
-
-Install all necessary packages, including core linting, formatting, and Angular-specific plugins.
-
-### 1. Install core dependencies
-
-`npm install`
-
-### 2. Install ESLint and Prettier setup
-
-`npm install -D eslint prettier eslint-config-prettier`
-
-### 3. Install Angular-specific ESLint and lint-staged
-
-`npm install -D @angular-eslint/builder @angular-eslint/eslint-plugin @angular-eslint/`
-`eslint-plugin-template @angular-eslint/template-parser lint-staged`
-
-### 4. Initialize Husky for Git Hooks
-
-`npm install -D husky`
-`npx husky init`
 
 ### Latest Fixes & Quality Setup
 
