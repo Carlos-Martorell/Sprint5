@@ -6,9 +6,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 To start a local development server, run:
 
-```bash
-ng serve
-```
+`ng serve`
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
@@ -16,23 +14,17 @@ Once the server is running, open your browser and navigate to `http://localhost:
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+`ng generate component component-name`
 
 For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
+`ng generate --help`
 
 ## Building
 
 To build the project run:
 
-```bash
-ng build
-```
+`ng build`
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
@@ -40,17 +32,13 @@ This will compile your project and store the build artifacts in the `dist/` dire
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
-```bash
-ng test
-```
+`ng test`
 
 ## Running end-to-end tests
 
 For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+`ng e2e`
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
@@ -80,18 +68,26 @@ The project is configured with tools to ensure all code is consistent and adhere
 
 Install all necessary packages, including the core Angular ESLint plugins and `lint-staged` for pre-commit checks.
 
-# Install core linting and formatting tools
+```bash
+# 1. Install core project dependencies
+npm install
 
+# 2. Install and initialize Tailwind CSS
+# This installs the packages and creates 'tailwind.config.js' and 'postcss.config.js'.
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+
+# 3. Install ESLint and Prettier setup
 npm install -D eslint prettier eslint-config-prettier
 
-# Install Angular-specific ESLint plugins and lint-staged
+# 4. Install Angular-specific ESLint and lint-staged
+ng add @angular-eslint/builder
+npm install -D @angular-eslint/eslint-plugin @angular-eslint/eslint-plugin-template @angular-eslint/template-parser lint-staged
 
-npm install -D @angular-eslint/builder @angular-eslint/eslint-plugin @angular-eslint/eslint-plugin-template @angular-eslint/template-parser lint-staged
-
-# Initialize Husky for Git Hooks
-
+# 5. Initialize Husky for Git Hooks
 npm install -D husky
 npx husky init
+```
 
 ### 2. Initial Codebase Cleanup (Mandatory First Run)
 
@@ -107,10 +103,10 @@ Since these tools were introduced later in the project, run these commands once 
 Husky runs **`lint-staged`** before every commit to ensure only the files you are about to commit are checked, making the process fast.
 
 1.  **Create the pre-commit hook file:**
-    echo "npx lint-staged" > .husky/pre-commit
+    `echo "npx lint-staged" > .husky/pre-commit`
 
 2.  **Make the file executable:**
-    chmod +x .husky/pre-commit
+    `chmod +x .husky/pre-commit`
 
 > 💡 **NOTE:** You must have the `lint-staged` configuration added to your `package.json` for the `pre-commit` hook to work correctly.
 
@@ -137,20 +133,29 @@ The directional sliding is achieved by:
 
 ---
 
-🛠️ Comandos de Terminal (Sin Bloques de Código)
-Aquí están todos los comandos de instalación y configuración en texto plano.
+## Development Setup & Initial Quality Tools
 
-Instalación de dependencias
-npm install -D eslint prettier eslint-config-prettier
-npm install -D @angular-eslint/builder @angular-eslint/eslint-plugin @angular-eslint/eslint-plugin-template @angular-eslint/template-parser lint-staged
-npm install -D husky
-npx husky init
+To get the project running locally and to set up the code quality checks, follow these steps.
 
-Configuración del pre-commit de Husky
-echo "npx lint-staged" > .husky/pre-commit
-chmod +x .husky/pre-commit
+Install all necessary packages, including core linting, formatting, and Angular-specific plugins.
 
----
+### 1. Install core dependencies
+
+`npm install`
+
+### 2. Install ESLint and Prettier setup
+
+`npm install -D eslint prettier eslint-config-prettier`
+
+### 3. Install Angular-specific ESLint and lint-staged
+
+`npm install -D @angular-eslint/builder @angular-eslint/eslint-plugin @angular-eslint/`
+`eslint-plugin-template @angular-eslint/template-parser lint-staged`
+
+### 4. Initialize Husky for Git Hooks
+
+`npm install -D husky`
+`npx husky init`
 
 ### Latest Fixes & Quality Setup
 
