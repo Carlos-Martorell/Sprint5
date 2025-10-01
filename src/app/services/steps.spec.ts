@@ -1,16 +1,21 @@
 import { TestBed } from '@angular/core/testing';
+import { StepsService } from './steps';
 
-import { Steps } from './steps';
-
-describe('Steps', () => {
-  let service: Steps;
+describe('StepsService', () => {
+  let service: StepsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(Steps);
+    service = TestBed.inject(StepsService);
   });
 
-  it('should be created', () => {
+  it('debería estar creado', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('debería devolver 3 pasos con la lógica correcta', () => {
+    const steps = service.getSteps();
+    expect(steps.length).toBe(3);
+    expect(steps[0].title).toBe('Dedica moltes hores');
   });
 });
